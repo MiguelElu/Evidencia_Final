@@ -10,13 +10,27 @@ public class Main {
     static ArrayList<doctor> doctores = new ArrayList<doctor>();
     static ArrayList<paciente> pacientes = new ArrayList<paciente>();
     static ArrayList<cita> citas = new ArrayList<cita>();
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
-         load();
-         loadd();
-         loadp();
-         loadc();
- System.out.println(citas.get(0).fecha);
+        load();
+        loadd();
+        loadp();
+        loadc();
+         boolean activousuario = true;
+         while (activousuario){
+             System.out.println("Ingrese usuario");
+             String res = br.readLine();
+
+             if (login.containsKey(res)) {
+                 System.out.println("Ingrese contraseña");
+                 String pass = br.readLine();
+                 if (pass.equals(login.get(res))){
+                     activousuario = false;
+                 } else {System.out.println("Error de contraseña");}
+             }else {System.out.println("Error de usuario");}
+
+         }
 
 
 
@@ -53,6 +67,7 @@ public class Main {
                             pass = pass + line.charAt(i);
                         }
                     }
+
                     login.put(user, pass);
 
                     success = false;
