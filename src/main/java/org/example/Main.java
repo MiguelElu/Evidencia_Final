@@ -46,6 +46,12 @@ public class Main {
                      String esp = br.readLine();
                      altad(nomd,esp);
                      break;
+                 case "2":
+                     System.out.println("Ingrese nombre");
+                     String nomp = br.readLine();
+
+                     altap(nomp);
+                     break;
 
              }
 
@@ -365,6 +371,11 @@ public class Main {
        String idnuevo =Integer.toString(Integer.parseInt(doctores.get(doctores.size()).id)+1);
         doctor temp = new doctor(idnuevo,nom,esp);
         doctores.add(temp);
+    }
+    public static void altap(String nom) {
+        String idnuevo =Integer.toString(Integer.parseInt(pacientes.get(pacientes.size()).id)+1);
+        paciente temp = new paciente(idnuevo,nom);
+        pacientes.add(temp);
     }
 
 }
