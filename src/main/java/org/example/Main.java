@@ -9,12 +9,14 @@ public class Main {
     static HashMap<String,String> login = new HashMap<>();
     static ArrayList<doctor> doctores = new ArrayList<doctor>();
     static ArrayList<paciente> pacientes = new ArrayList<paciente>();
+    static ArrayList<cita> citas = new ArrayList<cita>();
 
     public static void main(String[] args) throws IOException {
          load();
          loadd();
          loadp();
- System.out.println(pacientes.get(0).nombre);
+         loadc();
+ System.out.println(citas.get(0).fecha);
 
 
 
@@ -227,6 +229,86 @@ public class Main {
 
 
                     bufferedWriter.write("d1,ejemplo\n");
+
+
+                } catch (IOException e2) {
+                    System.out.println("IOException catched while reading: " + e2.getMessage());
+                } finally {
+                    try {
+
+                        if (bufferedWriter != null) {
+                            bufferedWriter.close();
+                        }
+                    } catch (IOException e2) {
+                        System.out.println("IOException catched while closing: " + e.getMessage());
+                    }
+                }
+
+            }
+
+        }
+    }
+
+    public static void loadc() throws IOException {
+        boolean success = true;
+        while (success) {
+            String inputFilename = "C:\\Users\\migue\\OneDrive - Universidad Tecmilenio\\Tetramestre 5\\Certificacion de Java 1\\EvidFinal\\db\\citas.txt";
+            BufferedReader bufferedReader = null;
+            try {
+                bufferedReader = new BufferedReader(new FileReader(inputFilename));
+
+
+                String line;
+                String id = null;
+                String fecha = null;
+                String motivo = null;
+                boolean primero = true;
+                boolean segundo = true;
+                String actual = null;
+                while ((line = bufferedReader.readLine()) != null) {
+                    primero = true;
+                    segundo = true;
+                    id = "";
+                    fecha = "";
+                    motivo = "";
+                    for (int i = 0; i < line.length(); i++) {
+                        actual = String.valueOf(line.charAt(i));
+                        if (actual.equals(",")) {
+                            if (primero) {
+                                i = i + 1;
+                                primero = false;
+                            } else {
+                                i = i + 1;
+                                segundo = false;
+                            }
+                        }
+                        if (primero&&segundo) {
+                            id = id + line.charAt(i);
+
+                        } else if (segundo){
+                            fecha = fecha + line.charAt(i);
+                        }
+                        else motivo = motivo +line.charAt(i);
+                    }
+                    cita temp = new cita(id,fecha,motivo);
+                    citas.add(temp);
+
+                }
+                // bufferedWriter.write(line + "\n");
+                success = false;
+            } catch (IOException e) {
+                System.out.println("IOException catched while reading: " + e.getMessage());
+                String f = "citas.txt";
+                new File("C:\\Users\\migue\\OneDrive - Universidad Tecmilenio\\Tetramestre 5\\Certificacion de Java 1\\EvidFinal\\db", f).createNewFile();
+                String outputFilename = "C:\\Users\\migue\\OneDrive - Universidad Tecmilenio\\Tetramestre 5\\Certificacion de Java 1\\EvidFinal\\db\\citas.txt";
+                BufferedWriter bufferedWriter = null;
+
+                try {
+
+                    bufferedWriter = new BufferedWriter(new FileWriter(outputFilename));
+
+
+                    bufferedWriter.write("d1,ejemplo,ejemplo\n");
 
 
                 } catch (IOException e2) {
