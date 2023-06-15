@@ -10,6 +10,8 @@ public class Main {
     static ArrayList<doctor> doctores = new ArrayList<doctor>();
     static ArrayList<paciente> pacientes = new ArrayList<paciente>();
     static ArrayList<cita> citas = new ArrayList<cita>();
+
+    static ArrayList<rcita> rcitas = new ArrayList<rcita>();
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
@@ -17,6 +19,7 @@ public class Main {
         loadd();
         loadp();
         loadc();
+        loadcr();
          boolean activousuario = true;
          while (activousuario){
              System.out.println("Ingrese usuario");
@@ -37,6 +40,7 @@ public class Main {
              System.out.println("1 Alta doctor");
              System.out.println("2 Alta paciente");
              System.out.println("3 Agendar cita");
+             System.out.println("4 Finalizar");
              String mres = br.readLine();
              switch(mres) {
                  case "1":
@@ -348,6 +352,86 @@ public class Main {
 
 
                     bufferedWriter.write("d1,ejemplo,ejemplo\n");
+
+
+                } catch (IOException e2) {
+                    System.out.println("IOException catched while reading: " + e2.getMessage());
+                } finally {
+                    try {
+
+                        if (bufferedWriter != null) {
+                            bufferedWriter.close();
+                        }
+                    } catch (IOException e2) {
+                        System.out.println("IOException catched while closing: " + e.getMessage());
+                    }
+                }
+
+            }
+
+        }
+    }
+
+    public static void loadcr() throws IOException {
+        boolean success = true;
+        while (success) {
+            String inputFilename = "C:\\Users\\migue\\OneDrive - Universidad Tecmilenio\\Tetramestre 5\\Certificacion de Java 1\\EvidFinal\\db\\relacioncitas.txt";
+            BufferedReader bufferedReader = null;
+            try {
+                bufferedReader = new BufferedReader(new FileReader(inputFilename));
+
+
+                String line;
+                String id = null;
+                String doc = null;
+                String pac = null;
+                boolean primero = true;
+                boolean segundo = true;
+                String actual = null;
+                while ((line = bufferedReader.readLine()) != null) {
+                    primero = true;
+                    segundo = true;
+                    id = "";
+                    doc = "";
+                    pac = "";
+                    for (int i = 0; i < line.length(); i++) {
+                        actual = String.valueOf(line.charAt(i));
+                        if (actual.equals(",")) {
+                            if (primero) {
+                                i = i + 1;
+                                primero = false;
+                            } else {
+                                i = i + 1;
+                                segundo = false;
+                            }
+                        }
+                        if (primero&&segundo) {
+                            id = id + line.charAt(i);
+
+                        } else if (segundo){
+                            doc = doc + line.charAt(i);
+                        }
+                        else pac = pac +line.charAt(i);
+                    }
+                    rcita temp = new rcita(id,doc,pac);
+                    rcitas.add(temp);
+
+                }
+                // bufferedWriter.write(line + "\n");
+                success = false;
+            } catch (IOException e) {
+                System.out.println("IOException catched while reading: " + e.getMessage());
+                String f = "realcioncitas.txt";
+                new File("C:\\Users\\migue\\OneDrive - Universidad Tecmilenio\\Tetramestre 5\\Certificacion de Java 1\\EvidFinal\\db", f).createNewFile();
+                String outputFilename = "C:\\Users\\migue\\OneDrive - Universidad Tecmilenio\\Tetramestre 5\\Certificacion de Java 1\\EvidFinal\\db\\relacioncitas.txt";
+                BufferedWriter bufferedWriter = null;
+
+                try {
+
+                    bufferedWriter = new BufferedWriter(new FileWriter(outputFilename));
+
+
+                    bufferedWriter.write("1,1,1\n");
 
 
                 } catch (IOException e2) {
