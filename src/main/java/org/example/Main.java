@@ -31,7 +31,25 @@ public class Main {
              }else {System.out.println("Error de usuario");}
 
          }
+        activousuario = true;
+         while (activousuario){
+             System.out.println("Eliga opcion:");
+             System.out.println("1 Alta doctor");
+             System.out.println("2 Alta paciente");
+             System.out.println("3 Agendar cita");
+             String mres = br.readLine();
+             switch(mres) {
+                 case "1":
+                     System.out.println("Ingrese nombre");
+                     String nomd = br.readLine();
+                     System.out.println("Ingrese especialidad");
+                     String esp = br.readLine();
+                     altad(nomd,esp);
+                     break;
 
+             }
+
+         }
 
 
     }
@@ -342,6 +360,11 @@ public class Main {
             }
 
         }
+    }
+    public static void altad(String nom, String esp) {
+       String idnuevo =Integer.toString(Integer.parseInt(doctores.get(doctores.size()).id)+1);
+        doctor temp = new doctor(idnuevo,nom,esp);
+        doctores.add(temp);
     }
 
 }
