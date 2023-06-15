@@ -49,6 +49,7 @@ public class Main {
                      System.out.println("Ingrese especialidad");
                      String esp = br.readLine();
                      altad(nomd,esp);
+
                      break;
                  case "2":
                      System.out.println("Ingrese nombre");
@@ -472,17 +473,17 @@ public class Main {
         }
     }
     public static void altad(String nom, String esp) {
-       String idnuevo =Integer.toString(Integer.parseInt(doctores.get(doctores.size()).id)+1);
+       String idnuevo =Integer.toString(doctores.size()+1);
         doctor temp = new doctor(idnuevo,nom,esp);
         doctores.add(temp);
     }
     public static void altap(String nom) {
-        String idnuevo =Integer.toString(Integer.parseInt(pacientes.get(pacientes.size()).id)+1);
+        String idnuevo =Integer.toString(pacientes.size()+1);
         paciente temp = new paciente(idnuevo,nom);
         pacientes.add(temp);
     }
     public static void altac(String fech, String doc, String pac, String mot ) {
-        String idnuevo =Integer.toString(Integer.parseInt(citas.get(citas.size()).id)+1);
+        String idnuevo =Integer.toString(citas.size()+1);
         cita temp = new cita(idnuevo,fech,mot);
         citas.add(temp);
         rcita temp2 = new rcita(idnuevo,doc,pac);

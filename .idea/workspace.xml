@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="47459da1-fde8-4813-a53d-72d10d58b37f" name="Changes" comment="array doctores">
+    <list default="true" id="47459da1-fde8-4813-a53d-72d10d58b37f" name="Changes" comment="add save methods for all">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="add_save_files" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -82,7 +83,42 @@
       <option name="project" value="LOCAL" />
       <updated>1686795375028</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add menu and class alta doctor">
+      <created>1686798068006</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1686798068006</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add menu and class alta paciente">
+      <created>1686798943590</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1686798943590</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add clase, array y load de relacion cita/doc/paciente">
+      <created>1686799921387</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1686799921387</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add alta cita">
+      <created>1686800396516</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1686800396516</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add save methods for all">
+      <created>1686801296203</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1686801296203</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -91,6 +127,22 @@
     <MESSAGE value="create class doctor + constructor" />
     <MESSAGE value="array doctores" />
     <MESSAGE value="add citas array and class" />
-    <option name="LAST_COMMIT_MESSAGE" value="add citas array and class" />
+    <MESSAGE value="add menu and class alta doctor" />
+    <MESSAGE value="add menu and class alta paciente" />
+    <MESSAGE value="add clase, array y load de relacion cita/doc/paciente" />
+    <MESSAGE value="add alta cita" />
+    <MESSAGE value="add save methods for all" />
+    <option name="LAST_COMMIT_MESSAGE" value="add save methods for all" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
+          <line>475</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
