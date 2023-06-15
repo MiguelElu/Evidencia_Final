@@ -1,15 +1,20 @@
 package org.example;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
 
     static HashMap<String,String> login = new HashMap<>();
+    static ArrayList<doctor> doctores = new ArrayList<doctor>();
+    static ArrayList<paciente> pacientes = new ArrayList<paciente>();
 
     public static void main(String[] args) throws IOException {
          load();
          loadd();
+         loadp();
+ System.out.println(pacientes.get(0).nombre);
 
 
 
@@ -47,7 +52,7 @@ public class Main {
                         }
                     }
                     login.put(user, pass);
-                    System.out.println(user + pass);
+
                     success = false;
 
                 }
@@ -126,13 +131,12 @@ public class Main {
                         }
                         else esp = esp +line.charAt(i);
                     }
-
-                    System.out.println(id+" "+ nom +" "+ esp);
-                    success = false;
+                    doctor temp = new doctor(id,nom,esp);
+                    doctores.add(temp);
 
                 }
                 // bufferedWriter.write(line + "\n");
-
+               success = false;
             } catch (IOException e) {
                 System.out.println("IOException catched while reading: " + e.getMessage());
                 String f = "doctores.txt";
@@ -146,6 +150,83 @@ public class Main {
 
 
                     bufferedWriter.write("d1,ejemplo,ejemplo\n");
+
+
+                } catch (IOException e2) {
+                    System.out.println("IOException catched while reading: " + e2.getMessage());
+                } finally {
+                    try {
+
+                        if (bufferedWriter != null) {
+                            bufferedWriter.close();
+                        }
+                    } catch (IOException e2) {
+                        System.out.println("IOException catched while closing: " + e.getMessage());
+                    }
+                }
+
+            }
+
+        }
+    }
+    public static void loadp() throws IOException {
+        boolean success = true;
+        while (success) {
+            String inputFilename = "C:\\Users\\migue\\OneDrive - Universidad Tecmilenio\\Tetramestre 5\\Certificacion de Java 1\\EvidFinal\\db\\pacientes.txt";
+            BufferedReader bufferedReader = null;
+            try {
+                bufferedReader = new BufferedReader(new FileReader(inputFilename));
+
+
+                String line;
+                String id = null;
+                String nom = null;
+
+                boolean primero = true;
+
+                String actual = null;
+                while ((line = bufferedReader.readLine()) != null) {
+                    primero = true;
+
+                    id = "";
+                    nom = "";
+
+                    for (int i = 0; i < line.length(); i++) {
+                        actual = String.valueOf(line.charAt(i));
+                        if (actual.equals(",")) {
+
+                                i = i + 1;
+                                primero = false;
+
+                            }
+
+                        if (primero) {
+                            id = id + line.charAt(i);
+
+                        } else
+                            nom = nom + line.charAt(i);
+                        }
+                    paciente temp = new paciente(id,nom);
+                    pacientes.add(temp);
+                    }
+                success = false;
+
+
+                // bufferedWriter.write(line + "\n");
+
+            } catch (IOException e) {
+                System.out.println("IOException catched while reading: " + e.getMessage());
+                String f = "pacientes.txt";
+                new File("C:\\Users\\migue\\OneDrive - Universidad Tecmilenio\\Tetramestre 5\\Certificacion de Java 1\\EvidFinal\\db", f).createNewFile();
+                String outputFilename = "C:\\Users\\migue\\OneDrive - Universidad Tecmilenio\\Tetramestre 5\\Certificacion de Java 1\\EvidFinal\\db\\pacientes.txt";
+                BufferedWriter bufferedWriter = null;
+
+                try {
+
+                    bufferedWriter = new BufferedWriter(new FileWriter(outputFilename));
+
+
+                    bufferedWriter.write("d1,ejemplo\n");
 
 
                 } catch (IOException e2) {
