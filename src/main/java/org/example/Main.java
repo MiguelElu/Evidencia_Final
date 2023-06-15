@@ -70,10 +70,16 @@ public class Main {
                  case "4":
                      activousuario = false;
                      break;
-
+                 default:
+                     System.out.println("Respuesta Invalida");
+                    break;
              }
 
          }
+         saverc();
+         saved();
+         savep();
+         savec();
 
 
     }
@@ -481,6 +487,132 @@ public class Main {
         citas.add(temp);
         rcita temp2 = new rcita(idnuevo,doc,pac);
         rcitas.add(temp2);
+    }
+
+    public static void saved() {
+        String outputFilename = "C:\\Users\\migue\\OneDrive - Universidad Tecmilenio\\Tetramestre 5\\Certificacion de Java 1\\EvidFinal\\db\\doctores.txt";
+        BufferedWriter bufferedWriter = null;
+
+        try {
+
+            bufferedWriter = new BufferedWriter(new FileWriter(outputFilename));
+
+            for ( int i =0; i < doctores.size(); i++){
+                bufferedWriter.write(doctores.get(i).id+","+doctores.get(i).nombre+","+doctores.get(i).especialidad+"\n");
+
+            }
+
+
+
+
+        } catch(IOException e) {
+            System.out.println("IOException catched while reading: " + e.getMessage());
+        } finally {
+            try {
+
+                if (bufferedWriter != null) {
+                    bufferedWriter.close();
+                }
+            } catch (IOException e) {
+                System.out.println("IOException catched while closing: " + e.getMessage());
+            }
+        }
+
+
+    }
+    public static void savep() {
+        String outputFilename = "C:\\Users\\migue\\OneDrive - Universidad Tecmilenio\\Tetramestre 5\\Certificacion de Java 1\\EvidFinal\\db\\pacientes.txt";
+        BufferedWriter bufferedWriter = null;
+
+        try {
+
+            bufferedWriter = new BufferedWriter(new FileWriter(outputFilename));
+
+            for ( int i =0; i < pacientes.size(); i++){
+                bufferedWriter.write(pacientes.get(i).id+","+pacientes.get(i).nombre+"\n");
+
+            }
+
+
+
+
+        } catch(IOException e) {
+            System.out.println("IOException catched while reading: " + e.getMessage());
+        } finally {
+            try {
+
+                if (bufferedWriter != null) {
+                    bufferedWriter.close();
+                }
+            } catch (IOException e) {
+                System.out.println("IOException catched while closing: " + e.getMessage());
+            }
+        }
+
+
+    }
+
+    public static void savec() {
+        String outputFilename = "C:\\Users\\migue\\OneDrive - Universidad Tecmilenio\\Tetramestre 5\\Certificacion de Java 1\\EvidFinal\\db\\citas.txt";
+        BufferedWriter bufferedWriter = null;
+
+        try {
+
+            bufferedWriter = new BufferedWriter(new FileWriter(outputFilename));
+
+            for ( int i =0; i < citas.size(); i++){
+                bufferedWriter.write(citas.get(i).id+","+citas.get(i).fecha+","+citas.get(i).motivo+"\n");
+
+            }
+
+
+
+
+        } catch(IOException e) {
+            System.out.println("IOException catched while reading: " + e.getMessage());
+        } finally {
+            try {
+
+                if (bufferedWriter != null) {
+                    bufferedWriter.close();
+                }
+            } catch (IOException e) {
+                System.out.println("IOException catched while closing: " + e.getMessage());
+            }
+        }
+
+
+    }
+    public static void saverc() {
+        String outputFilename = "C:\\Users\\migue\\OneDrive - Universidad Tecmilenio\\Tetramestre 5\\Certificacion de Java 1\\EvidFinal\\db\\relacioncitas.txt";
+        BufferedWriter bufferedWriter = null;
+
+        try {
+
+            bufferedWriter = new BufferedWriter(new FileWriter(outputFilename));
+
+            for ( int i =0; i < rcitas.size(); i++){
+                bufferedWriter.write(rcitas.get(i).id+","+rcitas.get(i).doc+","+rcitas.get(i).pac+"\n");
+
+            }
+
+
+
+
+        } catch(IOException e) {
+            System.out.println("IOException catched while reading: " + e.getMessage());
+        } finally {
+            try {
+
+                if (bufferedWriter != null) {
+                    bufferedWriter.close();
+                }
+            } catch (IOException e) {
+                System.out.println("IOException catched while closing: " + e.getMessage());
+            }
+        }
+
+
     }
 
 
