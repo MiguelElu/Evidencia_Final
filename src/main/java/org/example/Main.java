@@ -56,6 +56,20 @@ public class Main {
 
                      altap(nomp);
                      break;
+                 case "3":
+                     System.out.println("Ingrese Fecha (DD/MM/YYYY)");
+                     String fech = br.readLine();
+                     System.out.println("Ingrese ID del Doctor");
+                     String idd = br.readLine();
+                     System.out.println("Ingrese ID del Paciente");
+                     String idp = br.readLine();
+                     System.out.println("Ingrese el motivo de la cita");
+                     String mot = br.readLine();
+                     altac(fech,idd,idp,mot);
+                     break;
+                 case "4":
+                     activousuario = false;
+                     break;
 
              }
 
@@ -461,5 +475,13 @@ public class Main {
         paciente temp = new paciente(idnuevo,nom);
         pacientes.add(temp);
     }
+    public static void altac(String fech, String doc, String pac, String mot ) {
+        String idnuevo =Integer.toString(Integer.parseInt(citas.get(citas.size()).id)+1);
+        cita temp = new cita(idnuevo,fech,mot);
+        citas.add(temp);
+        rcita temp2 = new rcita(idnuevo,doc,pac);
+        rcitas.add(temp2);
+    }
+
 
 }
